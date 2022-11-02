@@ -64,10 +64,25 @@ developing your own process.
 
   - How I debugged:
 
+  - Received 500 Internal Server Error in console
+  - Network Preview / Rails server logs: "exception :"#<NameError: uninitialized constant ToysController::Toys>"
+  - issue located in ToyController#create
+  - corrected typo "Toys" -> "Toy"
+  - Fixed, created data now persists to db ✅
+
 - Update the number of likes for a toy
 
   - How I debugged:
 
+  - Received "Uncaught (in promise) SyntaxError: Unexpected end of JSON input" in console
+  - Rails server logs: "app/controllers/toys_controller.rb:16:in `update' Completed 204 No Content"
+  - issue located in ToyController#update on Line 16
+  - added: "render json: toy, status: :ok" below Line 16
+  - Fixed, like button updates and persists to db ✅
+
 - Donate a toy to Goodwill (and delete it from our database)
 
   - How I debugged:
+
+  - Checked routes and noticed that ":destroy" wasn't included
+  - Fixed, accidentally donated the green alien 🥲 ✅
